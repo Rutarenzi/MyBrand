@@ -1,0 +1,207 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    border: none;
+    font-family:'Poppins', sans-serif;
+    text-transform: capitalize;
+}
+html{
+    font-size: 15px;
+    scroll-behavior: smooth;
+}
+body{
+    background-color: #1E1E1E;
+}
+.container{
+    width: 75%;
+    margin:auto;
+    
+}
+
+nav{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ height: 5rem;
+ top: 0;
+ position: fixed;
+ z-index: 2;
+ background-color:#1E1E1E;
+
+}
+nav .container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+}
+nav .container a{
+    color: white;
+}
+nav .container a span{
+    color:#E33A3A;
+}
+nav .container ul{
+    display: flex;
+    height: 100%;
+}
+nav .container ul li{
+    display: inline-block;
+    height: 100%;
+}
+nav .container ul li a{
+    width: 6rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;  
+}
+.About{
+    display: grid;
+    place-items: center;
+    position: relative;
+    height: 100vh;
+
+}
+.About .container{
+  display: grid;
+  grid-template-columns: 3rem auto 28rem;
+  gap: 1rem;  
+  margin:auto;
+  border-bottom: solid 1px rgba(4,194,201,20%);
+  padding: 70px 0px;
+}
+
+
+.About .about2{
+  color: white;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+}
+.About .social{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.8rem;
+    
+}
+.About .social a {
+    color:#04C2C9;
+}
+
+.About .about2 h3{
+    font-size: 40px;
+    
+    opacity: .6;
+}
+
+
+.About .container .profile .circle{
+    width: 35rem;
+    height: 35rem;
+    border-radius: 50%;
+    overflow:hidden;
+    position: relative;
+    border: solid 3px #04c2c9; 
+}
+.About .container .profile .circle{
+    opacity: .3;
+}
+.skill-section .container{
+    display:flex;
+    justify-content: space-between;
+    padding: 70px 0px;
+    border-bottom: solid 1px rgba(4,194,201,20%);
+    margin-bottom: 50px;
+}
+.skill-section .Header {
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    width: 15%;
+    margin:auto;
+    border-bottom: solid 2px rgba(4, 194, 201, 0.2);
+    padding-bottom: 20px;
+}
+.skill-section .Header h3 span{
+    
+   color: rgba(4, 194, 201, 0.5);
+}
+
+
+.skill-section .container .card{
+    border-left: solid 3px #04C2C9 ;
+    width: 100%;
+}
+.skill-section .container .card .skill{
+    width: 70%;
+    background-color:#292825 ;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 58px;
+    padding: 0px 0px 0px 0px;
+    text-align:center;
+     
+}
+.skill-section .container .card h3{
+    
+    align-items: center;
+    padding-top: 20px;
+    color: white;
+}
+.skill-section .container .card .skill progress{
+    width: 100%;
+    height: 10%;  
+   
+}
+progress::-webkit-progress-bar {
+            background-color:#292825;
+        }
+progress::-webkit-progress-value {
+            background-color: #04C2C9!important;
+        }
+
+.works .Header{
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    width: 15%;
+    margin:auto;
+    border-bottom: solid 2px rgba(4, 194, 201, 0.2);
+    padding-bottom: 20px;
+}
+.works .Header  h3 span{
+    
+    color: rgba(4, 194, 201, 0.5);
+ }
+ .works .container{
+    display:flex;
+    justify-content: space-between;
+    padding: 70px 0px;
+    gap: 1rem;
+    border-bottom: solid 1px rgba(4,194,201,20%);
+    margin-bottom: 50px;
+ }
+ .works .container .worker{
+    width: 25%;
+    height: 60vh;
+    
+    
+ }
+ .works .container .worker img{
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    object-fit:cover;
+    
+ }
