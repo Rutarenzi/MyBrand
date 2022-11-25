@@ -42,11 +42,11 @@
               </nav>
       <div class="main">
         <div class="row">
-            <div class="coll">
+            <div class="colo ">
               <table style="width: 100%">
                 <caption style="font-size: 25px;">All message</caption>
                 <tr>
-                  <th>  N0</th>
+                  <th>N0</th>
                   <th>News</th>
                   <th>Email</th>
                   <th>Date</th>
@@ -62,7 +62,7 @@
                   <td>Rutagama Axcel</td>
                   <td>november 25, 2022</td>
                   
-                  <td><i class="fas fa-eye" style="margin-left: 2px; font-size: 20px;color: rgba(4, 194, 201,0.5);"></i><i class="fas fa-trash" style="margin-left: 2px; font-size: 20px;color: red"></i></td>
+                  <td><i class="fas fa-eye" onclick="togglePopup()" style="margin-left: 2px; cursor: pointer;font-size: 20px;color: rgba(4, 194, 201,0.5);"></i><i class="fas fa-trash" style="margin-left: 2px; font-size: 20px;color: red"></i></td>
                 </tr>
                 <tr>
                   <td>2</td>
@@ -73,7 +73,7 @@
                   <td>Rutagama Axcel</td>
                   <td>november 25, 2022</td>
                   
-                  <td><i class="fas fa-eye" style="margin-left: 2px; font-size: 20px;color: rgba(4, 194, 201,0.5);"></i><i class="fas fa-trash" style="margin-left: 2px; font-size: 20px;color: red"></i></td>
+                  <td><i class="fas fa-eye" onclick="togglePopup()" style="margin-left: 2px; font-size: 20px;color: rgba(4, 194, 201,0.5);"></i><i class="fas fa-trash" style="margin-left: 2px; font-size: 20px;color: red"></i></td>
                
                 </tr>
                 </tr>
@@ -86,11 +86,50 @@
                   <td>Rutagama Axcel</td>
                   <td>november 25, 2022</td>
                  
-                  <td><i class="fas fa-eye" style="margin-left: 2px; font-size: 20px;color: rgba(4, 194, 201,0.5);"></i><i class="fas fa-trash" style="margin-left: 2px; font-size: 20px;color: red"></i></td>
+                  <td><i class="fas fa-eye" onclick="togglePopup()" style="margin-left: 2px; font-size: 20px;color: rgba(4, 194, 201,0.5);"></i><i class="fas fa-trash" style="margin-left: 2px; font-size: 20px;color: red"></i></td>
                 </tr>
                 </tr>
                
               </table>
       </div>
       </div>
+      <div class="popup" id="popup-1">
+              <div class="content">
+                <div class="close-btn" onclick="toggleClose()">X</div>
+                <h1>rutagaramaaxcel@gmail.com</h1>
+                <div class="sms">
+                 <p>
+                  and mobile developer and data scientist with experience
+                  for over a year. I am 
+                  I'm a web and mobile developer and data scientist with experience
+                  for over a year. I am 
+                  I'm a web and mobile developer and data scientist with experience
+                  for over a year. I am             
+                 </p>
+                 <p>
+                  and mobile developer and data scientist with experience
+                  for over a year. I am 
+                  I'm a web and mobile developer and data scientist with experience
+                  for over a year. I am 
+                  I'm a web and mobile developer and data scientist with experience
+                  for over a year. I am             
+                 </p>
+                 <p>
+                  and mobile developer and data scientist with experience
+                  for over a year. I am 
+                  I'm a web and mobile developer and data scientist with experience
+                  for over a year. I am 
+                  I'm a web and mobile developer and data scientist with experience
+                  for over a year. I am             
+                 </p>
+              </div>
+      </div>
+      <script>
+        function toggleClose(){
+          document.getElementById('popup-1').style.display="none";
+        }
+        function togglePopup(){
+          document.getElementById('popup-1').style.display="block";
+        }
+      </script>
     </body></html>
