@@ -1,0 +1,71 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home-Portfolio</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="css/swiper-bundle.min.css"> 
+        <script src="https://cdn.tiny.cloud/1/gpcw217azedros6hzl701csg2t4u6w8n7uswl3jphd9hvzyh/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>   
+    </head>
+    <body>
+        <div class="containerz">
+      <nav class="naver">
+        <ul>
+            <li><a class="linkerr " href="#" id="logo">
+            <div> <img src="img/axcel.jpeg"></div>
+               <div><span class="nav-item" style="color:white; font-size: 27px;">Ruta<span style="color: rgba(4, 194, 201)">Axcel</span></span></div> 
+             </a></li>
+            <li><a class="linkerr" href="dashbaord.html" >
+                <i class="fas fa-table"></i>
+                <span class="nav-item" >Dashboard</span>
+            </a></li>
+            <li><a class="linkerr" href="massage.html" >
+                <i class="fas fa-sms"></i>
+                
+                <span class="nav-item">Message</span>
+            </a></li>
+            <li><a class="linkerr" href="allpost.html" >
+                <i class="fas fa-blog"></i>
+                <span class="nav-item" >All post</span>
+            </a></li>
+            <li><a class="linkerr" href="adder.html">
+                <i class="fas fa-plus"></i>
+                <span class="nav-item" style="color:rgba(4, 194, 201, 0.5);">Add Post</span>
+            </a></li>
+           
+            <li><a href="index.html" class="linkerr" id="logout" >
+                <i class="fas fa-blog"></i>
+                <span class="nav-item">Logout</span>
+            </a></li>
+        </ul>
+      </nav>
+      <div class="main">
+        <div class="commenter">
+            <!-- <div style="">
+                <h3>RutaAxcel</h3>
+                <p>I'm a web and mobile developer and data scientist with experience
+                    for over a year. I am very much expert in HTML, CSS,Database design.
+                   
+                </p>
+                <div><i class="fa fa-twitter"></i>Likes</div> 
+            </div> -->
+            <form>
+             <input type="text" placeholder="title">
+             <input type="text" placeholder="Editor">
+             <textarea style="height: 350px;">
+                Enter Your comment
+             </textarea>
+             <button class="senderz" style="margin-top:30px">save</button>
+             </form>
+        </div>
+      </div>
+      <script>
+        tinymce.init({
+          selector: 'textarea',
+          plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+      </script>
+    </body></html>
