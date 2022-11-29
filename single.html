@@ -63,13 +63,7 @@
                     hard work and being passionate about what I do.
                      
                 </p>
-                <!-- <blockquote>
-                    I'm a web and mobile developer and data scientist with experience
-                    for over a year. I am very much expert in HTML, CSS,Database design.
-                    I am well organized, efficient, and self-motivated. My key to success has been to learn quickly,
-                    hard work and being passionate about what I do.
-                     
-                </blockquote> -->
+               
                 <p>I'm a web and mobile developer and data scientist with experience
                     for over a year. I am very much expert in HTML, CSS,Database design.
                     I am well organized, efficient, and self-motivated. My key to success has been to learn quickly,
@@ -124,18 +118,58 @@
                     </p>
                     <div><i class="fa fa-twitter"></i>Likes</div> 
                 </div> -->
-                <form>
-                 <input type="text" placeholder="Enter your number">
-                 <input type="text" placeholder="Enter your password">
-                 <textarea style="height: 150px;">
-                    Enter Your comment
+                <form id="formComment">
+                    <span id="comterror" style="color:aqua"></span>
+                 <input type="text" placeholder="Enter your number" id="commenter" style="color: white">
+                 <span id="Emailcomterror" style="color:aqua"></span>
+                 <input type="text" placeholder="Enter your email" id="EmailCommenter"  style="color: white">
+                 <span id="smscomterror" style="color:aqua"></span>
+                 <textarea style="height: 150px;" id="smsCommenter">
+                    
                  </textarea>
-                 <button class="senderz">Comment</button>
+                 <button class="senderz" onclick="validorz()">Comment</button>
                  </form>
             </div>
             </section>
 
+          <script>
+                function validorz(){
+             const x = document.getElementById('formComment');
+             const y = document.getElementById('commenter');
+             const z=document.getElementById('EmailCommenter');
+             const w=document.getElementById('smsCommenter');
+             
+             x.addEventListener('submit',(e)=>{
+             if(!(z.value).includes("@") || !((z.value).includes('.'))){
+            e.preventDefault();
+            document.getElementById('Emailcomterror').innerHTML="please Enter valid email"; 
+            };
+        if(z.value ==="")
+        { 
+            e.preventDefault();
+            document.getElementById('Emailcomterror').innerHTML="Please Email is required";
+        };
+        if(y.value === ""){
+                e.preventDefault();
+            document.getElementById('comterror').innerHTML="please your name is required"; 
+            }
+            else{
+                document.getElementById('comterror').innerHTML="";
+            }
 
+        if(  w.value > 1 && w.value < 8){
+                e.preventDefault();
+            document.getElementById('smscomterror').innerHTML="Your comment atleast 8 characters"; 
+            }
+            else if(w.value === ""){
+                e.preventDefault();
+            document.getElementById('smscomterror').innerHTML="please write a comment";  
+            }
+             });
+          
+            }
+           
+          </script>
         
     </body>
 </html>

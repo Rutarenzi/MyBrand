@@ -29,16 +29,17 @@
           <section class="loginfull">
             <div class="loginForm">
                     <h2>Login</h2>
-                    <form>
+                    <form id="former2">
                        <div class="user-box">
-                        
-                        <input type="text" name="" required placeholder="Enter Your Email">
+                        <span style="color:aqua" id="logerror"></span>
+                        <input type="text" name="" style="color:white" placeholder="Enter Your Email" id="loginEmail">
                        </div> 
                        <div class="user-box">
-                        
-                           <input type="password" class="password" placeholder="Enter Your password">
+                        <span style="color:aqua" id="logr"></span>
+                           <input type="password" class="password" style="color: white"  placeholder="Enter Your password" id="passw">
                        </div>
-                       <button class="sumbitbtn"><a href="dashbaord.html" style="color: white">Send<a></button>
+                       <button class="sumbitbtn" onclick="validor()">send</button>
+                       <a href="dashbaord.html"  type="submit" style="color: #1e1e1e " onclick="validor()">Send<a></a>
                        <div class="shorter">
                             <div><input type="checkbox" class="checker"><span class="rember">Remmeber</span></div> 
 
@@ -47,5 +48,36 @@
                     </form>
             </div>
           </section>
+
+          <script>
+            function validor(){
+             const  x = document.getElementById('passw');
+             const y = document.getElementById('former2');
+             const z=document.getElementById('loginEmail');
+             y.addEventListener('submit',(e)=>{
+                if(z.value ==="") { 
+            e.preventDefault();
+            document.getElementById('logerror').innerHTML="Please Email is required";
+        } else if(!(z.value).includes("@") || !((z.value).includes('.'))){
+            e.preventDefault();
+            document.getElementById('logerror').innerHTML="please Enter valid email"; 
+            } else{
+            document.getElementById('logerror').innerHTML=""; 
+        }
+        if(x.value === ""){
+                e.preventDefault();
+            document.getElementById('logr').innerHTML="password is required"; 
+            } 
+
+             if(  (x.value).length > 1 && (x.value).length < 8){
+                e.preventDefault();
+            document.getElementById('logr').innerHTML="password must be atleast 8 characters"; 
+            }
+             });
+          
+            }
+           
+
+          </script>
     </body>
 </html>
