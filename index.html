@@ -152,13 +152,19 @@
               <p>Email:rutagaramaaxcel@gmail.com</p>
         </div>   
         <div class="message">
-            <form>
-             <input type="text" placeholder="Enter your number">
-             <input type="text" placeholder="Enter your password">
-             <textarea style="height: 150px;">
-                Enter Your message
+            <form id="former" action="/"  >
+                <span id="numberror" style="color:aqua" ></span><br>
+             <input type="text" placeholder="Enter your number" id="phonenumber" style="color: white" >
+             
+           
+             <span id="emailerror" style="color:aqua"></span>
+             <input type="text" placeholder="Enter your Email" id="emailer" style="color: white">
+             <span id="texterror" style="color:aqua" ></span><br>
+             <textarea style="height: 150px; color: white" id="texter">
+               
+                
              </textarea>
-             <button class="sender">Send</button>
+             <button class="sender" type="submit" onclick="validator()" >send</button>
              </form>
         </div>
     </div>
@@ -274,8 +280,9 @@
     </div>
     </section>
     <!--end of blog post-->
+    
        <script src="script/swiper-bundle.min.js"></script>
-   <script src="script.js"></script>  
+       <script src="script.js"></script>
     </body>
 
 </html>

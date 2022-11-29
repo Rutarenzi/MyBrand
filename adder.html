@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="containerz">
-      <nav class="naver">
+      <nav class="naver" id="naver2">
         <ul>
             <li><a class="linkerr " href="#" id="logo">
             <div> <img src="img/axcel.jpeg"></div>
@@ -42,15 +42,11 @@
         </ul>
       </nav>
       <div class="main">
+        <a class="toggle-dash" onclick="openSider()">
+          <i class="fas fa-bars" ></i>
+        </a>
         <div class="commenter">
-            <!-- <div style="">
-                <h3>RutaAxcel</h3>
-                <p>I'm a web and mobile developer and data scientist with experience
-                    for over a year. I am very much expert in HTML, CSS,Database design.
-                   
-                </p>
-                <div><i class="fa fa-twitter"></i>Likes</div> 
-            </div> -->
+         
             <form>
              <input type="text" placeholder="title">
              <input type="text" placeholder="Editor">
@@ -68,4 +64,5 @@
           toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
       </script>
+       <script src="script.js"></script>
     </body></html>
