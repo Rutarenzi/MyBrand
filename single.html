@@ -37,8 +37,8 @@
 
                      </div>
                      <div class="text">
-                         <h3>RutaAxcel</h3>
-                         <p>november 25, 2022</p>
+                         <h3 id="author"></h3>
+                         <p id="dater"></p>
                      </div>
                  </div>
                  <div class="button">
@@ -47,90 +47,94 @@
 
             </div>
             <div class="content">
-                <h3>Full-stack Developer & Data scientist Full-stack Developer & Data scientist</h3>
-                <p>I'm a web and mobile developer and data scientist with experience
-                    for over a year. I am very much expert in HTML, CSS,Database design.
-                    I am well organized, efficient, and self-motivated. My key to success has been to learn quickly,
-                    hard work and being passionate about what I do.
-                     
-                </p>
-                <div class="content-img-container">
-
-                </div>
-                <p>I'm a web and mobile developer and data scientist with experience
-                    for over a year. I am very much expert in HTML, CSS,Database design.
-                    I am well organized, efficient, and self-motivated. My key to success has been to learn quickly,
-                    hard work and being passionate about what I do.
-                     
-                </p>
-               
-                <p>I'm a web and mobile developer and data scientist with experience
-                    for over a year. I am very much expert in HTML, CSS,Database design.
-                    I am well organized, efficient, and self-motivated. My key to success has been to learn quickly,
-                    hard work and being passionate about what I do.
-                     
-                </p>
-                <p>I'm a web and mobile developer and data scientist with experience
-                    for over a year. I am very much expert in HTML, CSS,Database design.
-                    I am well organized, efficient, and self-motivated. My key to success has been to learn quickly,
-                    hard work and being passionate about what I do.
-                     
-                </p>
-                <p>I'm a web and mobile developer and data scientist with experience
-                    for over a year. I am very much expert in HTML, CSS,Database design.
-                    I am well organized, efficient, and self-motivated. My key to success has been to learn quickly,
-                    hard work and being passionate about what I do.
-                     
-                </p>
-                <p>I'm a web and mobile developer and data scientist with experience
-                    for over a year. I am very much expert in HTML, CSS,Database design.
-                    I am well organized, efficient, and self-motivated. My key to success has been to learn quickly,
-                    hard work and being passionate about what I do.
-                     
-                </p>
-                <p>I'm a web and mobile developer and data scientist with experience
-                    for over a year. I am very much expert in HTML, CSS,Database design.
-                    I am well organized, efficient, and self-motivated. My key to success has been to learn quickly,
-                    hard work and being passionate about what I do.
-                     
-                </p>
-                <p>I'm a web and mobile developer and data scientist with experience
-                    for over a year. I am very much expert in HTML, CSS,Database design.
-                    I am well organized, efficient, and self-motivated. My key to success has been to learn quickly,
-                    hard work and being passionate about what I do.
-                     
-                </p>
-                <p>I'm a web and mobile developer and data scientist with experience
-                    for over a year. I am very much expert in HTML, CSS,Database design.
-                    I am well organized, efficient, and self-motivated. My key to success has been to learn quickly,
-                    hard work and being passionate about what I do.
-                     
-                </p> 
-
+                <h3 id="title"></h3>
                 
+                <div class="content-img-container" id="imger">
+
+                </div >
+                 <!-- <img class="content-img-container"  src="img/work2.jpg" > -->
+                
+                <p id="storyer">
+                </p>
              </div>
+             <div><span><i class="fa fa-heart" style="color: aquamarine">likes  </i></span></div>
              <div class="commenter">
-                <!-- <div style="">
+                <h3 style="color:aquamarine">Comments:<span id="comamount"></span></h3>
+                <div class="comer" id="comer">
+                 <!-- <div style="color:antiquewhite;" class="com">
                     <h3>RutaAxcel</h3>
                     <p>I'm a web and mobile developer and data scientist with experience
                         for over a year. I am very much expert in HTML, CSS,Database design.
                        
                     </p>
-                    <div><i class="fa fa-twitter"></i>Likes</div> 
-                </div> -->
-                <form id="formComment">
-                    <span id="comterror" style="color:aqua"></span>
-                 <input type="text" placeholder="Enter your number" id="commenter" style="color: white">
-                 <span id="Emailcomterror" style="color:aqua"></span>
-                 <input type="text" placeholder="Enter your email" id="EmailCommenter"  style="color: white">
-                 <span id="smscomterror" style="color:aqua"></span>
-                 <textarea style="height: 150px;" id="smsCommenter">
                     
-                 </textarea>
+                   </div> -->
+                   </div>
+                <form id="formComment" >
+                    <input type="hidden" name="id" id="ider">
+                    <span id="comterror" style="color:rgba(255, 0, 25,0.5)"></span>
+                 <input type="text" placeholder="Enter your name" id="commenter" name="commenter" style="color: white">
+
+                 <span id="Emailcomterror" style="color:rgba(255, 0, 25,0.5)"></span>
+                 <input type="text" placeholder="Enter your email" id="EmailCommenter" name="EmailCommenter"  style="color: white">
+
+                 <span id="smscomterror" style="color:rgba(255, 0, 25,0.5)"></span>
+                 <textarea style="height: 150px; color: white" id="smsCommenter" name="smsCommenterz"></textarea>
                  <button class="senderz" onclick="validorz()">Comment</button>
                  </form>
             </div>
             </section>
+            <script src="addarticles.js"></script>
+            
+           
+            <script>
+                
+                window.addEventListener('load',()=>{
+                    var articleList = JSON.parse(localStorage.getItem('articles')) ?? [];
+                const c= location.href.split('=')[1];
+                const d= articleList.find(x=>x.id == c);
+                document.getElementById('ider').value=d.id;
+                document.getElementById('author').innerHTML=d.author;
+                document.getElementById('dater').innerHTML=d.createdDate;
+                document.getElementById('title').innerHTML=d.title;
+                 document.getElementById('imger').innerHTML=`<img src="img/${d.photo}" style="width: 100%;height: 35rem;">`;
+                document.getElementById('storyer').innerHTML=d.story;
+                document.getElementById('comamount').innerHTML=d.comment.length;
+                
+               
+                  }
+                  );
+                  const former = document.getElementById('formComment');
+former.addEventListener('submit',(e)=>{
+  e.preventDefault();
+  saver();
+  
+});
+const cr =document.getElementById('comer');
+
+function saver(){
+ var articleList = JSON.parse(localStorage.getItem('articles')) ?? [];
+  const ider = document.getElementById('ider').value;
+  const d= articleList.find(x=>x.id == ider);
+  const blogcomments =d.comment;
+  const commentr ={
+   name: document.getElementById('commenter').value,
+   email: document.getElementById('EmailCommenter').value,
+   idea:document.getElementById('smsCommenter').value,   
+  }
+  blogcomments.push(commentr);  
+  localStorage.setItem('articles', JSON.stringify(articleList));
+  document.getElementById('comamount').innerHTML=blogcomments.length;
+  blogcomments.forEach((value) => {
+    cr.innerHTML +=`<div style="color:antiquewhite;" class="com">
+                    <h3>${value.name}</h3>
+                    <p>${value.idea}</p>
+                   </div>`
+  });
+}
+
+            </script> 
+
 
           <script>
                 function validorz(){
@@ -138,38 +142,59 @@
              const y = document.getElementById('commenter');
              const z=document.getElementById('EmailCommenter');
              const w=document.getElementById('smsCommenter');
-             
-             x.addEventListener('submit',(e)=>{
+          
+ x.addEventListener('submit',(e)=>{
              if(!(z.value).includes("@") || !((z.value).includes('.'))){
             e.preventDefault();
-            document.getElementById('Emailcomterror').innerHTML="please Enter valid email"; 
-            };
-        if(z.value ==="")
-        { 
+            
+            document.getElementById('Emailcomterror').innerHTML="please Enter valid email";
+           
+            }else if(z.value ==="")
+                                { 
             e.preventDefault();
             document.getElementById('Emailcomterror').innerHTML="Please Email is required";
-        };
+        }else{
+            document.getElementById('Emailcomterror').innerHTML="";
+        }
         if(y.value === ""){
                 e.preventDefault();
             document.getElementById('comterror').innerHTML="please your name is required"; 
+            }
+            else if( (y.value).length > 1 && (y.value).length <= 4){
+                e.preventDefault();
+                document.getElementById('comterror').innerHTML="Use your full name, this is short";
             }
             else{
                 document.getElementById('comterror').innerHTML="";
             }
 
-        if(  w.value > 1 && w.value < 8){
+        if(w.value === ""){
                 e.preventDefault();
-            document.getElementById('smscomterror').innerHTML="Your comment atleast 8 characters"; 
+            document.getElementById('smscomterror').innerHTML="Comment is required"; 
             }
-            else if(w.value === ""){
+            else if((w.value).length > 1 && (w.value).length <= 3){
                 e.preventDefault();
-            document.getElementById('smscomterror').innerHTML="please write a comment";  
+                
+                document.getElementById('smscomterror').innerHTML="your comment Is too short"; 
+            
+            }else{
+                document.getElementById('smscomterror').innerHTML="";    
             }
+            // if((w.value).length > 3 && ((z.value).includes('.')) && (y.value).length > 4){
+                
+            //     addercommenter();
+            //     e.preventDefault();
+                
+
+            //  }
              });
-          
+            
+             
             }
            
-          </script>
         
+           
+          </script>
+      
     </body>
 </html>

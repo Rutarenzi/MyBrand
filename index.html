@@ -12,6 +12,7 @@
 
     <body>
       
+        <div class="container">
         
         <nav class="navbar">
             <div class="Logo"><a href="index.html" style="color: white">Ruta<span style="color:rgb(4, 194, 201)">Axcel</span></a></div>
@@ -30,6 +31,7 @@
             <a href="login.html" style="color:rgb(4, 194, 201);" class="loginer">login</a>
           </div>
         </nav>
+    </div>
      
     <section class="About" id="About">
          <div class="container">
@@ -50,7 +52,7 @@
                 </p>
                 <button>Download Cv</button>
            </div>
-           <div class="profile">
+           <div class="profile" >
                 <div class="circle">
                    <img src="img/axcel.jpeg">
                 </div>
@@ -152,18 +154,15 @@
               <p>Email:rutagaramaaxcel@gmail.com</p>
         </div>   
         <div class="message">
-            <form id="former" action="/"  >
-                <span id="numberror" style="color:aqua" ></span><br>
-             <input type="text" placeholder="Enter your number" id="phonenumber" style="color: white" >
+            <form id="former" action="thanks.html">
+                <span id="numberror" style="color:rgba(255, 0, 25,0.5) ;width: 40px;" ></span><br>
+             <input type="text" placeholder="Enter your name" id="phonenumber" style="color: white" >
              
            
-             <span id="emailerror" style="color:aqua"></span>
+             <span id="emailerror" style="color:rgba(255, 0, 25,0.5);width: 40px" ></span><br>
              <input type="text" placeholder="Enter your Email" id="emailer" style="color: white">
-             <span id="texterror" style="color:aqua" ></span><br>
-             <textarea style="height: 150px; color: white" id="texter">
-               
-                
-             </textarea>
+             <span id="texterror" style="color:#1e1e1e">Message is required</span>
+             <textarea style="height: 150px; color: white;" id="texter" value=""></textarea>
              <button class="sender" type="submit" onclick="validator()" >send</button>
              </form>
         </div>
@@ -174,8 +173,9 @@
         <div class="Header"><h3> MY <span>BLOGS</span></h3></div>
     <div class="slide-container swiper">
       <div class="slide-content">
-            <div class="blog-wrapper swiper-wrapper">
-                <div class="blog2 swiper-slide">
+            <div class="blog-wrapper swiper-wrapper" id="bloggers">
+
+                <!-- <div class="blog2 swiper-slide">
                       <div class="image-content">
                           
                             <div class="blog-image">
@@ -189,9 +189,8 @@
                           seems something went wrong</p>
                           <button class="button"><a href="single.html" style="color: white">Read More</a></button>
                         </div>
-
-                </div>
-                <div class="blog2 swiper-slide">
+                    </div> -->
+                <!-- <div class="blog2 swiper-slide">
                     <div class="image-content">
                        
                           <div class="blog-image">
@@ -206,8 +205,8 @@
                         <button class="button"><a href="single.html" style="color: white">Read More</a></button>
                       </div>
 
-              </div>
-              <div class="blog2 swiper-slide">
+              </div> -->
+              <!-- <div class="blog2 swiper-slide">
                 <div class="image-content">
                     
                       <div class="blog-image">
@@ -222,8 +221,8 @@
                     <button class="button"><a href="single.html" style="color: white">Read More</a></button>
                   </div>
 
-          </div>
-              <div class="blog2 swiper-slide">
+          </div> -->
+              <!-- <div class="blog2 swiper-slide">
                 <div class="image-content">
                     
                       <div class="blog-image">
@@ -238,8 +237,8 @@
                     <button class="button"><a href="single.html" style="color: white">Read More</a></button>
                   </div>
 
-          </div>
-          <div class="blog2 swiper-slide">
+          </div> -->
+          <!-- <div class="blog2 swiper-slide">
             <div class="image-content">
                 
                   <div class="blog-image">
@@ -254,8 +253,8 @@
                 <button class="button"><a href="single.html" style="color: white">Read More</a></button>
               </div>
 
-      </div>
-      <div class="blog2 swiper-slide">
+      </div> -->
+      <!-- <div class="blog2 swiper-slide">
         <div class="image-content">
             
               <div class="blog-image">
@@ -270,7 +269,7 @@
            <button class="button"><a href="single.html" style="color: white">Read More</a></button>
           </div>
 
-  </div>
+  </div> -->
             </div>
            
       </div>
@@ -283,6 +282,32 @@
     
        <script src="script/swiper-bundle.min.js"></script>
        <script src="script.js"></script>
+       <script>
+    var articleList = JSON.parse(localStorage.getItem('articles')) ?? [];
+    articleList.forEach(function (blog){
+       
+        // var table = document.getElementById('postList')
+        
+        const diver=document.getElementById('bloggers');
+        // for( let x=0; x<1; x++){
+            diver.innerHTML +=`
+            <div class="blog2 swiper-slide">
+                <div class="image-content">
+                    
+                      <div class="blog-image">
+                            <img src="img/${blog.photo}" alt="" class="blog-img">
+                      </div>
+                </div>
+                <div class="blog-content">
+                    <h3 style="color:rgba(4, 194, 201, 0.5); font-size: 17px;">${blog.title}</h3>
+                   
+                    <button class="button"><a href="single.html?id=${blog.id}" style="color: white">Read</a></button>
+                  </div>
+
+          </div>`;
+        });
+        
+       </script>
     </body>
 
 </html>

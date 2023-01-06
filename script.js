@@ -1,6 +1,3 @@
-function openSider(){
-    document.getElementById('naver2').style.display="block";
-};
 function validator(){
   const  x = document.getElementById('phonenumber');
    const y = document.getElementById('former');
@@ -11,37 +8,36 @@ function validator(){
         if(!(z.value).includes("@") || !((z.value).includes('.'))){
             e.preventDefault();
             document.getElementById('emailerror').innerHTML="please Enter valid email"; 
-        }
-        if(z.value =="")
+        } else if(z.value =="")
         { 
             e.preventDefault();
             document.getElementById('emailerror').innerHTML="Please Email is required";
-        };
-        if( isNaN(x.value) == 1){
-            e.preventDefault();
-            document.getElementById('numberror').innerHTML="please Enter only Number";
-        }else if( x.value === ""){
-            e.preventDefault();
-            document.getElementById('numberror').innerHTML="please phone number is required";
-        } else if( w.value === ""){
-            
-            document.getElementById('numberror').innerHTML="NO EMPTY";
         }else{
+            document.getElementById('emailerror').innerHTML="";
+        };
+         if( x.value === ""){
+            e.preventDefault();
+            document.getElementById('numberror').innerHTML="please  your name is  required";
+        } else
+        {
             document.getElementById('numberror').innerHTML="";
+        } 
+        if( w.value === ""){
+            e.preventDefault();
+            document.getElementById('texterror').style.color="rgba(255, 0, 25,0.5)";
+        }else{
+            document.getElementById('texterror').style.color="#1e1e1e";
         }
        
        
     });
 }
-const toggleButton = document.getElementsByClassName('toggle-button')[0]
-const navbarLinks = document.getElementsByClassName('navbar-links')[0]
-toggleButton.addEventListener('click',()=>{
-    navbarLinks.classList.toggle('active')
-});
+
+
 var swiper = new Swiper(".slide-content",{
-    slidesPerView: 4,
+    slidesPerView: 5,
     spaceBetween: 10,
-    slidesPerGroup: 4,
+    // slidesPerGroup: 3,
     loop: true,
     loopFillGroupWidthBlack: true,
     pagination: {
@@ -68,4 +64,15 @@ breakpoints:{
         slidesPerView: 4,
     }
 }
+});
+
+
+
+function openSider(){
+    document.getElementById('naver2').style.display="block";
+};
+const toggleButton = document.getElementsByClassName('toggle-button')[0]
+const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+toggleButton.addEventListener('click',()=>{
+    navbarLinks.classList.toggle('active')
 });
