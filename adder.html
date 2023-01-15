@@ -7,11 +7,11 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link rel="stylesheet" href="css/swiper-bundle.min.css"> 
-        <script src="https://cdn.tiny.cloud/1/gpcw217azedros6hzl701csg2t4u6w8n7uswl3jphd9hvzyh/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>   
+         
     </head>
     <body>
         <div class="containerz">
-      <nav class="naver">
+      <nav class="naver" id="naver2">
         <ul>
             <li><a class="linkerr " href="#" id="logo">
             <div> <img src="img/axcel.jpeg"></div>
@@ -42,30 +42,136 @@
         </ul>
       </nav>
       <div class="main">
+        <a class="toggle-dash" onclick="openSider()">
+          <i class="fas fa-bars" ></i>
+        </a>
         <div class="commenter">
-            <!-- <div style="">
-                <h3>RutaAxcel</h3>
-                <p>I'm a web and mobile developer and data scientist with experience
-                    for over a year. I am very much expert in HTML, CSS,Database design.
-                   
-                </p>
-                <div><i class="fa fa-twitter"></i>Likes</div> 
-            </div> -->
-            <form>
-             <input type="text" placeholder="title">
-             <input type="text" placeholder="Editor">
-             <textarea style="height: 350px;">
-                Enter Your comment
+         
+            <form method="POST" id="formarticles" action="allpost.html">
+              <span id="previewer" ></span><br>
+              <input type="file" name="photo" id="photo" onchange="preview(event)"><br>
+              <input type="hidden" name="id"  id="id">
+              <span id="titlerror" style="color:rgba(255, 0, 25,0.5)"></span><br>
+             <input type="text" placeholder="title" style="color: white" id="title" value="" name="header">
+             <span id="authorerror" style="color:rgba(255, 0, 25,0.5)"></span>
+             <input type="text" placeholder="Editor" style="color:white" id="author" value="" name="author">
+             <span id="editorerror"  style="color:rgba(255, 0, 25,0.5)"></span><br>
+             <textarea style="height: 350px;" id="editor" name="editor" >
+                
              </textarea>
-             <button class="senderz" style="margin-top:30px">save</button>
+             <button class="senderz" style="margin-top:30px;" onclick="validarticler()">save</button>
              </form>
         </div>
       </div>
+      <script src="https://cdn.tiny.cloud/1/gpcw217azedros6hzl701csg2t4u6w8n7uswl3jphd9hvzyh/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> 
       <script>
         tinymce.init({
           selector: 'textarea',
           plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+          toolbar: 'dark|undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+          // content_css: 'dark',
+          statusbar: false,
+          content_style:` 
+          body {
+                    background:#1e1e1e;
+                    color: white;
+                    
+                }`
+                
+          
         });
+
       </script>
+      
+      <script src="script.js"></script>
+      <!-- <script src="allblog.js"></script> -->
+      <script src="addarticles.js"></script>
+      <script src="detail.js"></script>
+      <script>
+        window.addEventListener('load',()=>{
+          const c= location.href.split('=')[1];
+          if(c!== undefined){
+            var articleList = JSON.parse(localStorage.getItem('articles')) ?? [];
+                const d= articleList.find(x=>x.id == c); 
+                document.getElementById('id').value=d.id;
+                document.getElementById('title').value=d.title;
+                document.getElementById('author').value=d.author;    
+                document.getElementById('editor').value=d.story;
+               
+          }
+          
+        })
+
+      </script>
+       <script>
+        function preview(event){
+            const image= URL.createObjectURL(event.target.files[0]);
+            const imageDiv =document.getElementById('previewer');
+            const newImg = document.createElement('img');
+
+            imageDiv.innerHTML ='';
+            newImg.src=image;
+            newImg.width= "100",
+            newImg.height="100",
+           
+            imageDiv.appendChild(newImg);
+            
+        }
+           function validarticler(){
+             const x = document.getElementById('formarticles');
+             const y = document.getElementById('title');
+             const z=document.getElementById('author');
+             const w=document.getElementById('editor');
+          
+ x.addEventListener('submit',(e)=>{
+          if(y.value == ""){
+            e.preventDefault();
+            document.getElementById('titlerror').innerHTML="Title is required";
+          } else if((y.value).length >= 1 && (y.value).length < 15){
+            e.preventDefault();
+            document.getElementById('titlerror').innerHTML="your Title is too short"; 
+          } else{
+            document.getElementById('titlerror').innerHTML=""; 
+          }
+
+        if(z.value === ""){
+                e.preventDefault();
+            document.getElementById('authorerror').innerHTML="Author Name is required"; 
+            }
+            else if( (z.value).length >= 1 && (z.value).length <= 7){
+                e.preventDefault();
+                document.getElementById('authorerror').innerHTML="please Write your full Name";
+            }
+            else{
+                document.getElementById('authorerror').innerHTML="";
+            }
+
+        if(w.value === ""){
+                e.preventDefault();
+            document.getElementById('editorerror').innerHTML="Article is required"; 
+            }
+            else if((w.value).length >= 1 && (w.value).length <= 10){
+                e.preventDefault();
+                
+                document.getElementById('editorerror').innerHTML="please Write the article of not less than 100 words"; 
+            
+            }else{
+                document.getElementById('editorerror').innerHTML=" ";    
+            }
+            // if((w.value).length > 3 && ((z.value).includes('.')) && (y.value).length > 4){
+                
+          
+            // e.preventDefault();
+            // save();
+
+            //  }
+             });
+            
+             
+            }
+           
+       </script>
+       
+      
+      
     </body></html>

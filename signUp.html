@@ -29,9 +29,9 @@
           <section class="loginfull">
             <div class="loginForm">
                 <span id="notUser" style="color:rgba(255, 0, 25,0.5)"></span>
-                    <h2>Login</h2>
+                    <h2>Register</h2>
                     
-                    <form id="former2" action="dashbaord.html" autocomplete="off">
+                    <form id="former2" action="register.js" autocomplete="off">
                        <div class="user-box">
                         <span style="color:rgba(255, 0, 25,0.5)" id="logerror"></span>
                         <input type="text" name="" style="color:white" placeholder="Enter Your Email" id="loginEmail">
@@ -41,18 +41,18 @@
                            <input type="password" class="password" style="color: white"  placeholder="Enter Your password" id="passw">
                        </div>
                        <button class="sumbitbtn" onclick="validor()">send</button>
-                       <a href="dashbaord.html"  type="submit" style="color: #1e1e1e " onclick="validor()">Send<a></a>
+                       <a href="dashbaord.html"  type="submit" style="color: #1e1e1e " onclick="validor2()">Register<a></a>
                        <div class="shorter">
-                            <div><input type="checkbox" class="checker"><span class="rember">Remmeber</span></div> 
+                            
 
-                             <span class="forget">Forget Password?</span>
+                            <a href="login.html"> <span class="forget">Login</span></a>
                        </div>
                     </form>
             </div>
           </section>
 
           <script>
-            function validor(){
+            function validor2(){
              const  x = document.getElementById('passw');
              const y = document.getElementById('former2');
              const z=document.getElementById('loginEmail');
@@ -73,18 +73,15 @@
             document.getElementById('logr').innerHTML="password is required"; 
             }else if((x.value).length > 1 && (x.value).length < 8){
                 e.preventDefault();
-            document.getElementById('logr').innerHTML=" wrong password"; 
+            document.getElementById('logr').innerHTML=" password must be 8 Character long"; 
             }
             else{
                 document.getElementById('logr').innerHTML="";
             }
 
             if((z.value).includes("@") && (z.value).includes('.') && (x.value).length >=8){
-                if(z.value !== "ruta@gmail.com" || x.value !== "12345678"){
-                    e.preventDefault();
-                    document.getElementById('notUser').innerHTML="You are unauthorized user";
-                }
-                
+                localStorage.setItem('UserEmail',email);
+                localStorage.setItem('UserPwd',pass);
             }
             
              });
