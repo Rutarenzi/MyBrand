@@ -1,6 +1,7 @@
 <!Doctype html>
 <html>
     <head>
+    
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home-Portfolio</title>
@@ -11,7 +12,14 @@
 
 
     <body>
-      
+        <section class="loginfull" id="popcontainer">
+            <div class="loginForm" id="popindex">
+                   <span class="closeBtner" id="closeB" onclick="deleter()">X</span>
+                    <h2>Thank you!</h2>
+                    <p style="color:aqua;text-align:center">Your message was sent successfully</p>
+                    
+            </div>
+          </section>
         <div class="container">
         
         <nav class="navbar">
@@ -23,7 +31,7 @@
                 <ul>
                     <li><a href="#About">About</a></li>
                     <li><a href="#Skills">skills</a></li>
-                    <li><a href="#Works">Works</a></li>
+                    <li><a href="#Works">Works</a></li> 
                     <li><a href="#ContactUs">Contact-Us</a></li>
                     <li><a href="#blogs">Blog</a></li>
                 </ul>
@@ -175,101 +183,7 @@
       <div class="slide-content">
             <div class="blog-wrapper swiper-wrapper" id="bloggers">
 
-                <!-- <div class="blog2 swiper-slide">
-                      <div class="image-content">
-                          
-                            <div class="blog-image">
-                                  <img src="img/work2.jpg" alt="" class="blog-img">
-                            </div>
-                      </div>
-                      <div class="blog-content">
-                          
-                          <p class="description">How are you Rutagarama It has been log day without talk,
-                      
-                          seems something went wrong</p>
-                          <button class="button"><a href="single.html" style="color: white">Read More</a></button>
-                        </div>
-                    </div> -->
-                <!-- <div class="blog2 swiper-slide">
-                    <div class="image-content">
-                       
-                          <div class="blog-image">
-                                <img src="img/woo.jpg" alt="" class="blog-img">
-                          </div>
-                    </div>
-                    <div class="blog-content">
-                       
-                        <p class="description">How are you Rutagarama It has been log day without talk,
-                    
-                        seems something went wrong</p>
-                        <button class="button"><a href="single.html" style="color: white">Read More</a></button>
-                      </div>
-
-              </div> -->
-              <!-- <div class="blog2 swiper-slide">
-                <div class="image-content">
-                    
-                      <div class="blog-image">
-                            <img src="img/work2.jpg" alt="" class="blog-img">
-                      </div>
-                </div>
-                <div class="blog-content">
-                    
-                    <p class="description">How are you Rutagarama It has been log day without talk,
-                
-                    seems something went wrong</p>
-                    <button class="button"><a href="single.html" style="color: white">Read More</a></button>
-                  </div>
-
-          </div> -->
-              <!-- <div class="blog2 swiper-slide">
-                <div class="image-content">
-                    
-                      <div class="blog-image">
-                            <img src="img/woo.jpg" alt="" class="blog-img">
-                      </div>
-                </div>
-                <div class="blog-content">
-                    
-                    <p class="description">How are you Rutagarama It has been log day without talk,
-                
-                    seems something went wrong</p>
-                    <button class="button"><a href="single.html" style="color: white">Read More</a></button>
-                  </div>
-
-          </div> -->
-          <!-- <div class="blog2 swiper-slide">
-            <div class="image-content">
-                
-                  <div class="blog-image">
-                        <img src="img/work2.jpg" alt="" class="blog-img">
-                  </div>
-            </div>
-            <div class="blog-content">
-              
-                <p class="description">How are you Rutagarama It has been log day without talk,
             
-                seems something went wrong</p>
-                <button class="button"><a href="single.html" style="color: white">Read More</a></button>
-              </div>
-
-      </div> -->
-      <!-- <div class="blog2 swiper-slide">
-        <div class="image-content">
-            
-              <div class="blog-image">
-                    <img src="img/woo.jpg" alt="" class="blog-img">
-              </div>
-        </div>
-        <div class="blog-content">
-            
-            <p class="description">How are you Rutagarama It has been log day without talk,
-        
-            seems something went wrong</p>
-           <button class="button"><a href="single.html" style="color: white">Read More</a></button>
-          </div>
-
-  </div> -->
             </div>
            
       </div>
@@ -283,30 +197,33 @@
        <script src="script/swiper-bundle.min.js"></script>
        <script src="script.js"></script>
        <script>
-    var articleList = JSON.parse(localStorage.getItem('articles')) ?? [];
-    articleList.forEach(function (blog){
+ 
+    async function indexblog(){
+    const articleList = await fetch('https://my-brand-api-zgjz.onrender.com/api/blogs');
+    const blogs = await articleList.json();
+    blogs.forEach(function (blog){
        
-        // var table = document.getElementById('postList')
+   
         
         const diver=document.getElementById('bloggers');
-        // for( let x=0; x<1; x++){
+       
             diver.innerHTML +=`
             <div class="blog2 swiper-slide">
                 <div class="image-content">
                     
                       <div class="blog-image">
-                            <img src="img/${blog.photo}" alt="" class="blog-img">
+                            <img src="${blog.image.url}" alt="" class="blog-img">
                       </div>
                 </div>
                 <div class="blog-content">
                     <h3 style="color:rgba(4, 194, 201, 0.5); font-size: 17px;">${blog.title}</h3>
-                   
-                    <button class="button"><a href="single.html?id=${blog.id}" style="color: white">Read</a></button>
+                    <button class="button"><a href="single.html?id=${blog._id}" style="color: white">Read</a></button>
                   </div>
 
           </div>`;
         });
-        
+    }
+    indexblog()
        </script>
     </body>
 

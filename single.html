@@ -52,31 +52,23 @@
                 <div class="content-img-container" id="imger">
 
                 </div >
-                 <!-- <img class="content-img-container"  src="img/work2.jpg" > -->
+                
                 
                 <p id="storyer">
                 </p>
              </div>
-             <div><span><i class="fa fa-heart" style="color: aquamarine">likes  </i></span></div>
+             <div><span><i class="fa fa-heart" id="lik"style="color: aquamarine"> <span id="unbr">0</span>   likes  </i></span></div>
              <div class="commenter">
                 <h3 style="color:aquamarine">Comments:<span id="comamount"></span></h3>
                 <div class="comer" id="comer">
-                 <!-- <div style="color:antiquewhite;" class="com">
-                    <h3>RutaAxcel</h3>
-                    <p>I'm a web and mobile developer and data scientist with experience
-                        for over a year. I am very much expert in HTML, CSS,Database design.
-                       
-                    </p>
-                    
-                   </div> -->
+               
                    </div>
                 <form id="formComment" >
                     <input type="hidden" name="id" id="ider">
                     <span id="comterror" style="color:rgba(255, 0, 25,0.5)"></span>
                  <input type="text" placeholder="Enter your name" id="commenter" name="commenter" style="color: white">
 
-                 <span id="Emailcomterror" style="color:rgba(255, 0, 25,0.5)"></span>
-                 <input type="text" placeholder="Enter your email" id="EmailCommenter" name="EmailCommenter"  style="color: white">
+                
 
                  <span id="smscomterror" style="color:rgba(255, 0, 25,0.5)"></span>
                  <textarea style="height: 150px; color: white" id="smsCommenter" name="smsCommenterz"></textarea>
@@ -89,22 +81,31 @@
            
             <script>
                 
-                window.addEventListener('load',()=>{
-                    var articleList = JSON.parse(localStorage.getItem('articles')) ?? [];
-                const c= location.href.split('=')[1];
-                const d= articleList.find(x=>x.id == c);
-                document.getElementById('ider').value=d.id;
-                document.getElementById('author').innerHTML=d.author;
-                document.getElementById('dater').innerHTML=d.createdDate;
-                document.getElementById('title').innerHTML=d.title;
-                 document.getElementById('imger').innerHTML=`<img src="img/${d.photo}" style="width: 100%;height: 35rem;">`;
-                document.getElementById('storyer').innerHTML=d.story;
-                document.getElementById('comamount').innerHTML=d.comment.length;
+                window.addEventListener('load',async ()=>{
+                    const articleList = await fetch('https://my-brand-api-zgjz.onrender.com/api/blogs');
+                    const blogs = await articleList.json();
+                     const c= location.href.split('=')[1];
                 
-               
-                  }
-                  );
-                  const former = document.getElementById('formComment');
+            
+                const d= blogs.find(x=>x._id == c);
+                document.getElementById('ider').value=d._id;
+                document.getElementById('title').innerHTML=d.title;
+                 document.getElementById('imger').innerHTML=`<img src="${d.image.url}" style="width: 100%;height: 35rem;">`;
+                document.getElementById('storyer').innerHTML=d.content;
+                document.getElementById('comamount').innerHTML=d.comment.length;
+                         d.comment.forEach((value) => {
+                                         cr.innerHTML +=`<div style="color:antiquewhite;" class="com">
+                                                                <h3>${value.name}</h3>
+                                                                 <p>${value.content}</p>
+                                                          </div>`
+                                                        });
+                                                        }
+                                        );
+
+
+
+                  
+const former = document.getElementById('formComment');
 former.addEventListener('submit',(e)=>{
   e.preventDefault();
   saver();
@@ -112,27 +113,57 @@ former.addEventListener('submit',(e)=>{
 });
 const cr =document.getElementById('comer');
 
-function saver(){
- var articleList = JSON.parse(localStorage.getItem('articles')) ?? [];
+async function saver(){
+
+
+ const articleList = await fetch('https://my-brand-api-zgjz.onrender.com/api/blogs');
+ const blogs = await articleList.json();
+
+
   const ider = document.getElementById('ider').value;
-  const d= articleList.find(x=>x.id == ider);
+  const d= blogs.find(x=>x._id == ider);
   const blogcomments =d.comment;
-  const commentr ={
+  
+
+ 
+  var commentr ={
    name: document.getElementById('commenter').value,
-   email: document.getElementById('EmailCommenter').value,
-   idea:document.getElementById('smsCommenter').value,   
+   content:document.getElementById('smsCommenter').value,   
   }
-  blogcomments.push(commentr);  
-  localStorage.setItem('articles', JSON.stringify(articleList));
-  document.getElementById('comamount').innerHTML=blogcomments.length;
-  blogcomments.forEach((value) => {
+  const response = await  fetch(`https://my-brand-api-zgjz.onrender.com/api/blogs/${ider}/comments`,{
+    method: 'PUT',
+    body:JSON.stringify(commentr),
+    headers: {
+                 'Content-Type': 'application/json',
+             }
+});
+const rep = await response.json();
+if(response.status == 200){
+    const articleList = await fetch('https://my-brand-api-zgjz.onrender.com/api/blogs');
+ const blogs = await articleList.json();
+
+
+  const ider = document.getElementById('ider').value;
+  const d= blogs.find(x=>x._id == ider);
+  const blogcomments =d.comment;
+    document.getElementById('comamount').innerHTML=blogcomments.length;
+
     cr.innerHTML +=`<div style="color:antiquewhite;" class="com">
-                    <h3>${value.name}</h3>
-                    <p>${value.idea}</p>
+                    <h3>${commentr.name}</h3>
+                    <p>${commentr.content}</p>
                    </div>`
-  });
+
 }
 
+
+
+
+
+  
+   
+  
+}
+            
             </script> 
 
 
@@ -144,18 +175,8 @@ function saver(){
              const w=document.getElementById('smsCommenter');
           
  x.addEventListener('submit',(e)=>{
-             if(!(z.value).includes("@") || !((z.value).includes('.'))){
-            e.preventDefault();
-            
-            document.getElementById('Emailcomterror').innerHTML="please Enter valid email";
-           
-            }else if(z.value ==="")
-                                { 
-            e.preventDefault();
-            document.getElementById('Emailcomterror').innerHTML="Please Email is required";
-        }else{
-            document.getElementById('Emailcomterror').innerHTML="";
-        }
+     
+
         if(y.value === ""){
                 e.preventDefault();
             document.getElementById('comterror').innerHTML="please your name is required"; 
@@ -180,20 +201,32 @@ function saver(){
             }else{
                 document.getElementById('smscomterror').innerHTML="";    
             }
-            // if((w.value).length > 3 && ((z.value).includes('.')) && (y.value).length > 4){
-                
-            //     addercommenter();
-            //     e.preventDefault();
-                
-
-            //  }
+           
              });
             
              
             }
            
-        
-           
+            let clicked = false;
+           const likers =document.getElementById('lik')
+           likers.addEventListener('click',()=>{
+            document.getElementById('lik').style.color="red";
+             const cc=document.getElementById('unbr');
+            if(!clicked){
+                clicked= true,
+                document.getElementById('lik').style.color="red";
+                cc.textContent++
+              
+                
+               
+            } else{
+                clicked =false;
+                document.getElementById('lik').style.color="aquamarine";
+                cc.textContent--
+                
+                
+            }
+           })
           </script>
       
     </body>
